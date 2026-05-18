@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php --version)",
+      "Bash(composer --version)",
+      "Bash(npm --version)",
+      "Bash(rsync -a /tmp/statamic-scaffold/ ./)",
+      "Bash(rm -rf /tmp/statamic-scaffold)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(php artisan *)",
+      "Bash(curl -sS -o /tmp/home.html -w \"HTTP %{http_code} | size %{size_download}\\\\n\" http://127.0.0.1:8123/)",
+      "Bash(curl -sS -o /tmp/iot.html -w \"HTTP %{http_code} | size %{size_download}\\\\n\" http://127.0.0.1:8123/iot/sparapolpette)",
+      "Bash(grep -E \"\\(SPECIALISTI|RACCONTACI|DAL CABLAGGIO|HANNO LAVORATO|QUALITÀ|SPARAPOLPETTE\\)\" /tmp/home.html | head -10 && echo \"===SPARAPOLPETTE===\" && grep -E \"\\(SPARAPOLPETTE|/ PROGETTO IOT|HOME / IOT\\)\" /tmp/iot.html | head -10)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code} | %{size_download}b\\\\n\" \"http://127.0.0.1:8123/build/assets/site-CJ5SiRGY.css\")",
+      "Bash(curl -sS -o /dev/null -w \"HTTP %{http_code} | %{size_download}b\\\\n\" \"http://127.0.0.1:8123/build/assets/site-CzI1vhkK.js\")",
+      "Bash(curl -sS -o /tmp/home2.html -w \"home HTTP %{http_code} | %{size_download}b\\\\n\" http://127.0.0.1:8124/)",
+      "Bash(curl -sS -o /tmp/iot2.html -w \"iot HTTP %{http_code} | %{size_download}b\\\\n\" http://127.0.0.1:8124/iot/sparapolpette)",
+      "Read(//tmp/**)",
+      "Bash(curl -sS -o /tmp/home3.html -w \"home HTTP %{http_code} | %{size_download}b\\\\n\" http://127.0.0.1:8125/)",
+      "Bash(curl -sS -o /tmp/iot3.html  -w \"iot  HTTP %{http_code} | %{size_download}b\\\\n\" http://127.0.0.1:8125/iot/sparapolpette)",
+      "Bash(curl -sS -o /dev/null -w \"logo black:  HTTP %{http_code} | %{size_download}b\\\\n\" \"http://127.0.0.1:8125/images/logo/black-logo.png\")",
+      "Bash(curl -sS -o /dev/null -w \"logo white:  HTTP %{http_code} | %{size_download}b\\\\n\" \"http://127.0.0.1:8125/images/logo/white-logo.png\")",
+      "Bash(curl -sS -o /dev/null -w \"hero:        HTTP %{http_code} | %{size_download}b\\\\n\" \"http://127.0.0.1:8125/images/hero/Cavi%20e%20tubazioni.jpg\")",
+      "Bash(curl -sS -o /tmp/home4.html http://127.0.0.1:8126/ -w \"home %{http_code}\\\\n\")",
+      "Bash(curl -sS -o /tmp/iot4.html http://127.0.0.1:8126/iot/sparapolpette -w \"iot %{http_code}\\\\n\")",
+      "WebFetch(domain:www.emme2srl.it)"
+    ]
+  }
+}

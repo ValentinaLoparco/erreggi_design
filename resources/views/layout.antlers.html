@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title ?? site:name }} — {{ site:name }}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
+
+    {{ vite src="resources/js/site.js|resources/css/site.css" }}
+</head>
+<body class="bg-neutral-50 text-neutral-700 font-sans antialiased">
+    {{ partial:components/topbar }}
+    {{ partial:components/navbar :variant="navbar_variant ?? 'dark'" :active="nav_active ?? ''" }}
+
+    <main class="-mt-20">
+        {{ template_content }}
+    </main>
+
+    {{ partial:components/footer }}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{{# Logo Erregi Elettronica — accetta {{ variant }}: 'dark' (su superficie scura, usa white-logo) o 'light' (su superficie chiara, usa black-logo). Default: 'light'. #}}
+
+{{ if variant == 'dark' }}
+    {{ logo_src = '/images/logo/white-logo.png' }}
+{{ else }}
+    {{ logo_src = '/images/logo/black-logo.png' }}
+{{ /if }}
+
+<a href="/" class="inline-flex items-center">
+    <img src="{{ logo_src }}" alt="Erregi Elettronica" class="h-9 w-auto" loading="eager">
+</a>

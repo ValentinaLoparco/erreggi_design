@@ -1,0 +1,15 @@
+{{# Eyebrow label — pattern "/ LABEL" prima di un heading. #}}
+{{# Accetta {{ label }} (testo, sarà reso uppercase) e {{ variant }}: 'light' (su superficie chiara) o 'dark'. Default: 'light'. #}}
+
+{{ if variant == 'dark' }}
+    {{ slash_color = 'text-primary-400' }}
+    {{ text_color = 'text-neutral-300' }}
+{{ else }}
+    {{ slash_color = 'text-primary-500' }}
+    {{ text_color = 'text-neutral-500' }}
+{{ /if }}
+
+<p class="font-mono text-label uppercase mb-3">
+    <span class="{{ slash_color }}">/</span>
+    <span class="{{ text_color }}">{{ label }}</span>
+</p>

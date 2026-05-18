@@ -1,0 +1,204 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "../views";
+@source "../../content";
+
+/* ============================================================
+   Google Sans — local woff2 in /public/fonts/
+   Fallback: Nunito Sans (caricato da Google Fonts nel layout)
+   ============================================================ */
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Google Sans';
+  src: url('/fonts/GoogleSans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   Design system — Erregi Elettronica
+   Tailwind v4 @theme: overrides default palette and adds scale
+   ============================================================ */
+@theme {
+  /* Font families */
+  --font-sans: "Google Sans", "Nunito Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Primary — Erregi Green */
+  --color-primary-50:  #E5F9E5;
+  --color-primary-100: #B5EBB5;
+  --color-primary-200: #7AD87A;
+  --color-primary-300: #4AC84A;
+  --color-primary-400: #32B832;
+  --color-primary-500: #1EA81E;
+  --color-primary-600: #0D8A0D;
+  --color-primary-700: #076607;
+  --color-primary-800: #034203;
+
+  /* Neutral — Industrial Gray */
+  --color-neutral-50:  #F2F4F2;
+  --color-neutral-100: #D8DAD8;
+  --color-neutral-200: #BCBEBC;
+  --color-neutral-300: #9EA09E;
+  --color-neutral-400: #808280;
+  --color-neutral-500: #636463;
+  --color-neutral-600: #464646;
+  --color-neutral-700: #2D2D2D;
+  --color-neutral-800: #141414;
+
+  /* Type scale — display/h2/lead fluid (clamp tra 320px e 1280px) */
+  --text-display: clamp(2rem, 1.583rem + 2.083vw, 3.25rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  --text-h2: clamp(1.5rem, 1.292rem + 1.042vw, 2.125rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h2--font-weight: 600;
+
+  --text-h3: clamp(1.125rem, 1.042rem + 0.417vw, 1.375rem);
+  --text-h3--line-height: 1.1;
+  --text-h3--font-weight: 600;
+
+  --text-lead: clamp(1.25rem, 1.083rem + 0.833vw, 1.75rem);
+  --text-lead--line-height: 1.4;
+  --text-lead--letter-spacing: -0.01em;
+  --text-lead--font-weight: 400;
+
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.65;
+
+  --text-small: 0.8125rem;
+  --text-small--line-height: 1.5;
+
+  --text-mono: 0.8125rem;
+  --text-mono--line-height: 1.6;
+
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.1em;
+  --text-label--font-weight: 500;
+}
+
+/* Base */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[x-cloak] { display: none !important; }
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-neutral-700);
+  background: var(--color-neutral-50);
+}
+
+/* ============================================================
+   Hero slider — crossfade tra immagini di sfondo
+   Ciclo totale: 18s · 3 slide da 6s ciascuna (5s visibili + 1s di fade)
+   ============================================================ */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: hero-fade 18s infinite ease-in-out;
+}
+.hero-slide:nth-of-type(1) { animation-delay: -1s;  }
+.hero-slide:nth-of-type(2) { animation-delay:  5s;  }
+.hero-slide:nth-of-type(3) { animation-delay: 11s;  }
+
+@keyframes hero-fade {
+  0%    { opacity: 0; }
+  5.5%  { opacity: 1; }
+  33.3% { opacity: 1; }
+  38.9% { opacity: 0; }
+  100%  { opacity: 0; }
+}
+
+/* Indicatore slide — il trattino attivo si allunga e si colora di primario */
+.hero-dot {
+  display: inline-block;
+  height: 0.25rem;
+  width: 0.5rem;
+  background: var(--color-neutral-500);
+  animation: hero-dot 18s infinite ease-in-out;
+}
+.hero-dot:nth-of-type(1) { animation-delay: -1s;  }
+.hero-dot:nth-of-type(2) { animation-delay:  5s;  }
+.hero-dot:nth-of-type(3) { animation-delay: 11s;  }
+
+@keyframes hero-dot {
+  0%, 33.3%   { width: 2rem;   background: var(--color-primary-500); }
+  38.9%, 100% { width: 0.5rem; background: var(--color-neutral-500); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-dot { animation: none; }
+  .hero-slide:nth-of-type(1) { opacity: 1; }
+  .hero-dot:nth-of-type(1)   { width: 2rem; background: var(--color-primary-500); }
+}
+
+/* ============================================================
+   Scroll reveal — illumina parola per parola in sync col scroll
+   --reveal va da 0 (dim) a 1 (full), impostato da site.js per ogni word.
+   currentColor è il colore finale ereditato (es. neutral-700 sul <p>,
+   neutral-800 dentro <strong>).
+   ============================================================ */
+.reveal-word {
+  display: inline-block;
+  color: color-mix(in oklab, var(--color-neutral-300) calc((1 - var(--reveal, 0)) * 100%), currentColor);
+  transition: color 120ms linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-word { color: inherit; transition: none; }
+}
+
+/* ============================================================
+   Navbar — glass / blur al primo scroll
+   Stato iniziale: bg-transparent (definito inline via Alpine).
+   ============================================================ */
+.nav-glass-dark {
+  background-color: color-mix(in oklab, var(--color-neutral-800) 65%, transparent);
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  border-bottom: 1px solid color-mix(in oklab, var(--color-neutral-50) 8%, transparent);
+}
+.nav-glass-light {
+  background-color: color-mix(in oklab, var(--color-neutral-50) 75%, transparent);
+  backdrop-filter: saturate(140%) blur(16px);
+  -webkit-backdrop-filter: saturate(140%) blur(16px);
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+/* ============================================================
+   IoT tile — bagliore verde (primary-50/100) all'hover
+   ============================================================ */
+.iot-tile {
+  box-shadow: inset 0 0 0 0 transparent;
+}
+.iot-tile:hover {
+  background-color: color-mix(in oklab, var(--color-primary-50) 6%, var(--color-neutral-800));
+  box-shadow:
+    inset 0 0 60px color-mix(in oklab, var(--color-primary-100) 28%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, var(--color-primary-100) 35%, transparent);
+}

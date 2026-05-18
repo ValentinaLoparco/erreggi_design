@@ -1,0 +1,8 @@
+{{# Bottone CTA primario — verde + freccia. Accetta {{ label }} e {{ href }}. #}}
+
+<a href="{{ href ?= '#' }}" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-neutral-50 px-5 py-3 text-[13px] font-medium font-mono uppercase tracking-[0.1em] transition-colors">
+    {{ label }}
+    <svg viewBox="0 0 16 16" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M2 8h12M9 3l5 5-5 5"/>
+    </svg>
+</a>

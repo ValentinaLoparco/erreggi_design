@@ -1,0 +1,325 @@
+{{#
+    HOME — riproduzione screenshot-home.png.
+    navbar_variant default = 'dark' (impostato dal layout).
+    Ordine sezioni come definito in erregi-design-system.md.
+#}}
+
+{{# ================= HERO — dark, slider background ================= #}}
+<section class="hero-slider relative isolate overflow-hidden bg-neutral-800 text-neutral-50">
+
+    {{# Background slides — crossfade via CSS in site.css #}}
+    <img src="/images/hero/Cavi%20e%20tubazioni.jpg" alt="" aria-hidden="true" class="hero-slide" loading="eager">
+    <img src="/images/hero/Cavi%20scheda%20madre.jpg" alt="" aria-hidden="true" class="hero-slide" loading="eager">
+    <img src="/images/hero/Circuit%20Board%20Photo.jpg" alt="" aria-hidden="true" class="hero-slide" loading="lazy">
+
+    {{# Dark overlay — uniforma il contrasto #}}
+    <div class="absolute inset-0 bg-neutral-900/65"></div>
+
+    {{# Fade dalla navbar verso la hero — top: pieno neutral-800 (= navbar), poi trasparente #}}
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-48 bg-linear-to-b from-neutral-800 to-transparent"></div>
+
+    {{# Content — verticalmente centrato #}}
+    <div class="relative mx-auto flex min-h-170 max-w-7xl flex-col justify-center px-6 pt-32 pb-32 lg:px-10 lg:min-h-200 lg:pt-40 lg:pb-36">
+        <div>
+            {{ partial:components/eyebrow label="SERVIZI" variant="dark" }}
+            <h1 class="font-sans font-bold text-display text-neutral-50 max-w-3xl">
+                SPECIALISTI IN CABLAGGI<br>AD ALTA COMPLESSITÀ.
+            </h1>
+        </div>
+    </div>
+
+    {{# Slide indicator — ancorato in basso, allineato al container del titolo #}}
+    <div class="absolute inset-x-0 bottom-10 z-10 lg:bottom-14" aria-hidden="true">
+        <div class="mx-auto max-w-7xl px-6 lg:px-10">
+            <div class="flex items-center gap-2">
+                <span class="hero-dot"></span>
+                <span class="hero-dot"></span>
+                <span class="hero-dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{# ================= INTRO — light ================= #}}
+<section class="bg-neutral-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        {{ partial:components/eyebrow label="CHI SIAMO" variant="light" }}
+        <p class="scroll-reveal-text text-lead text-neutral-800">
+            ERREGI Elettronica progetta e realizza cablaggi standard e speciali, assemblaggi elettromeccanici e schede elettroniche. Dal 1986 lavoriamo a fianco di clienti industriali con una filiera interamente interna, dalla progettazione al collaudo, garantendo soluzioni custom anche con micro-connettori e tirature limitate.
+        </p>
+    </div>
+</section>
+
+
+{{# ================= SERVICES GRID — light ================= #}}
+<section class="bg-neutral-50 pb-16 lg:pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <article class="group bg-neutral-50 border border-neutral-100 flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_6px_20px_-12px_rgba(0,0,0,0.08)] hover:border-neutral-200">
+                <div class="relative aspect-4/3 w-full overflow-hidden bg-neutral-700">
+                    <img src="/images/services/Immagine%206bc20d%20(1).avif" alt="Cablaggi elettrici" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-linear-to-t from-neutral-900/55 via-neutral-900/25 to-neutral-900/15 transition-opacity duration-500 group-hover:opacity-60"></div>
+                </div>
+                <div class="p-6 flex flex-col gap-3 grow">
+                    <p class="font-mono text-label uppercase"><span class="text-primary-500">/</span> <span class="text-neutral-500">SERVIZIO — 01</span></p>
+                    <h3 class="font-sans font-semibold text-h3 text-neutral-800">Cablaggi elettrici</h3>
+                    <p class="text-body text-neutral-500 grow">
+                        La produzione di cavi e cablaggi per dispositivi elettromeccanici è stata ed è ancora, da oltre 40 anni, il core business aziendale.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 font-medium text-[14px] text-primary-700 hover:text-primary-600 transition-colors mt-2">
+                        Scopri di più
+                        <svg viewBox="0 0 16 16" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="group bg-neutral-50 border border-neutral-100 flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_6px_20px_-12px_rgba(0,0,0,0.08)] hover:border-neutral-200">
+                <div class="relative aspect-4/3 w-full overflow-hidden bg-neutral-700">
+                    <img src="/images/services/Immagine%20798x1316.avif" alt="Assemblaggi elettromeccanici" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-linear-to-t from-neutral-900/55 via-neutral-900/25 to-neutral-900/15 transition-opacity duration-500 group-hover:opacity-60"></div>
+                </div>
+                <div class="p-6 flex flex-col gap-3 grow">
+                    <p class="font-mono text-label uppercase"><span class="text-primary-500">/</span> <span class="text-neutral-500">SERVIZIO — 02</span></p>
+                    <h3 class="font-sans font-semibold text-h3 text-neutral-800">Assemblaggi elettromeccanici</h3>
+                    <p class="text-body text-neutral-500 grow">
+                        Assemblaggio meccanico, elettromeccanico e finitura di prodotti complessi nello stabilimento di Mazzè, con piena tracciabilità di processo.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 font-medium text-[14px] text-primary-700 hover:text-primary-600 transition-colors mt-2">
+                        Scopri di più
+                        <svg viewBox="0 0 16 16" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+                    </a>
+                </div>
+            </article>
+
+            <article class="group bg-neutral-50 border border-neutral-100 flex flex-col rounded-lg overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_6px_20px_-12px_rgba(0,0,0,0.08)] hover:border-neutral-200">
+                <div class="relative aspect-4/3 w-full overflow-hidden bg-neutral-700">
+                    <img src="/images/services/Immagine%20818x1316.avif" alt="Progettazione e costruzione schede" class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105" loading="lazy">
+                    <div class="absolute inset-0 bg-linear-to-t from-neutral-900/55 via-neutral-900/25 to-neutral-900/15 transition-opacity duration-500 group-hover:opacity-60"></div>
+                </div>
+                <div class="p-6 flex flex-col gap-3 grow">
+                    <p class="font-mono text-label uppercase"><span class="text-primary-500">/</span> <span class="text-neutral-500">SERVIZIO — 03</span></p>
+                    <h3 class="font-sans font-semibold text-h3 text-neutral-800">Progettazione e costruzione schede</h3>
+                    <p class="text-body text-neutral-500 grow">
+                        Progettazione e produzione di schede elettroniche custom, dal prototipo alla piccola serie, in conformità alle normative di settore e ai certificati di tracciabilità.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 font-medium text-[14px] text-primary-700 hover:text-primary-600 transition-colors mt-2">
+                        Scopri di più
+                        <svg viewBox="0 0 16 16" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+{{# ================= IOT — dark ================= #}}
+<section class="bg-neutral-800 text-neutral-50">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-16 lg:py-24">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            <div>
+                {{ partial:components/eyebrow label="INNOVAZIONE" variant="dark" }}
+                <h2 class="font-sans font-bold text-display text-neutral-50 mb-6 leading-[0.95]">
+                    DAL CABLAGGIO<br>AL PRODOTTO IOT.
+                </h2>
+                <p class="text-body text-neutral-300 mb-8 max-w-md">
+                    Oltre ai servizi industriali, sviluppiamo prodotti IoT proprietari e soluzioni custom per i nostri clienti — dal sensoring al firmware, fino al dispositivo finito. Una vetrina di come ERREGI traduce 40 anni di elettronica in innovazione.
+                </p>
+                {{ partial:components/btn-primary label="ESPLORA I PROGETTI" href="#" }}
+            </div>
+
+            <div class="grid grid-cols-2 gap-px bg-neutral-700">
+                <div class="iot-tile group aspect-square bg-neutral-800 p-6 flex flex-col justify-between transition-all duration-300">
+                    <p class="font-mono text-label uppercase"><span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">01</span> <span class="text-primary-400">/</span> <span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">IDEA</span></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="h-7 w-7 self-end text-primary-400 transition-colors duration-300 group-hover:text-primary-200" fill="currentColor" aria-hidden="true">
+                        <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"/>
+                    </svg>
+                </div>
+                <div class="iot-tile group aspect-square bg-neutral-800 p-6 flex flex-col justify-between transition-all duration-300">
+                    <p class="font-mono text-label uppercase"><span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">02</span> <span class="text-primary-400">/</span> <span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">DESIGN</span></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="h-7 w-7 self-end text-primary-400 transition-colors duration-300 group-hover:text-primary-200" fill="currentColor" aria-hidden="true">
+                        <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.1 6.1 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.1 8.1 0 0 1-3.078.132 4 4 0 0 1-.562-.135 1.4 1.4 0 0 1-.466-.247.7.7 0 0 1-.204-.288.62.62 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896q.19.012.348.048c.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04M4.705 11.912a1.2 1.2 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.4 3.4 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3 3 0 0 0 .126-.75zm1.44.026c.12-.04.277-.1.458-.183a5.1 5.1 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005zm3.582-3.043.002.001h-.002z"/>
+                    </svg>
+                </div>
+                <div class="iot-tile group aspect-square bg-neutral-800 p-6 flex flex-col justify-between transition-all duration-300">
+                    <p class="font-mono text-label uppercase"><span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">03</span> <span class="text-primary-400">/</span> <span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">PROTOTIPO</span></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="h-7 w-7 self-end text-primary-400 transition-colors duration-300 group-hover:text-primary-200" fill="currentColor" aria-hidden="true">
+                        <path d="M5 0a.5.5 0 0 1 .5.5V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2h1V.5a.5.5 0 0 1 1 0V2A2.5 2.5 0 0 1 14 4.5h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14v1h1.5a.5.5 0 0 1 0 1H14a2.5 2.5 0 0 1-2.5 2.5v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14h-1v1.5a.5.5 0 0 1-1 0V14A2.5 2.5 0 0 1 2 11.5H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2v-1H.5a.5.5 0 0 1 0-1H2A2.5 2.5 0 0 1 4.5 2V.5A.5.5 0 0 1 5 0m-.5 3A1.5 1.5 0 0 0 3 4.5v7A1.5 1.5 0 0 0 4.5 13h7a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 11.5 3zM5 6.5A1.5 1.5 0 0 1 6.5 5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5zM6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                    </svg>
+                </div>
+                <div class="iot-tile group aspect-square bg-neutral-800 p-6 flex flex-col justify-between transition-all duration-300">
+                    <p class="font-mono text-label uppercase"><span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">04</span> <span class="text-primary-400">/</span> <span class="text-neutral-400 transition-colors duration-300 group-hover:text-primary-200">PRODUZIONE</span></p>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="h-7 w-7 self-end text-primary-400 transition-colors duration-300 group-hover:text-primary-200" fill="currentColor" aria-hidden="true">
+                        <path d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022M6 8.694 1 10.36V15h5zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5z"/>
+                        <path d="M2 11h1v1H2zm2 0h1v1H4zm-2 2h1v1H2zm2 0h1v1H4zm4-4h1v1H8zm2 0h1v1h-1zm-2 2h1v1H8zm2 0h1v1h-1zm2-2h1v1h-1zm0 2h1v1h-1zM8 7h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zM8 5h1v1H8zm2 0h1v1h-1zm2 0h1v1h-1zm0-2h1v1h-1z"/>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{{# ================= 40 ANNI — light ================= #}}
+<section class="bg-neutral-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+        {{# Riga 1: titolo (sx) + paragrafo (dx) #}}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
+            <div>
+                {{ partial:components/eyebrow label="PERCHÉ ERREGI" variant="light" }}
+                <h2 class="font-sans font-bold text-display text-neutral-800 leading-[0.95]">
+                    40 ANNI DI<br>ESPERIENZA CON<br>FILIERA INTERNA
+                </h2>
+            </div>
+            <p class="text-body text-neutral-500 max-w-md lg:self-end">
+                Produciamo cablaggi di ogni tipo, dalle più svariate lavorazioni su richiesta specifica del cliente, fino all'assemblaggio di pezzi elettromeccanici e ad attività di Research & Design. Siamo in grado di garantire prodotti di alta qualità, nel rispetto delle normative internazionali.
+            </p>
+        </div>
+
+        {{# Riga 2: 4 aree affiancate #}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">01</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Filiera interna</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Progettazione, produzione, collaudo: ogni fase resta dentro lo stabilimento di Mazzè (TO), Italia.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— filiera 100% in-house</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">02</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Custom & micro</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Cablaggi speciali, micro-connettori, tirature da pezzo unico. Nessuna soglia minima d'ordine.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— da 1 pezzo a serie</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">03</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Standard internazionali</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Processi conformi alle normative di settore, certificati e tracciati.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— ISO 9001 · UL</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">04</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">R&D continuo</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Ricerca, sviluppo e prodotti IoT proprietari: l'evoluzione del cablaggio verso il dispositivo connesso.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— IoT lab interno</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{{# ================= CLIENTI — light ================= #}}
+<section class="bg-neutral-50 pb-16 lg:pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+            <div>
+                {{ partial:components/eyebrow label="CLIENTI" variant="light" }}
+                <h2 class="font-sans font-bold text-h2 text-neutral-800 leading-[1.05] max-w-md">
+                    HANNO LAVORATO<br>CON NOI
+                </h2>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 font-mono text-label uppercase text-primary-700 hover:text-primary-600 transition-colors">
+                TUTTI I CLIENTI
+                <svg viewBox="0 0 16 16" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+            </a>
+        </div>
+
+        {{# Bordi via gap-px + bg colorato sul wrapper — auto-corretto a ogni breakpoint #}}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-neutral-100 border border-neutral-100">
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-1.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-2.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-3.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-4.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-5.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-6.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/clients/Logo-7.svg" alt="Logo cliente" class="max-h-12 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+        </div>
+    </div>
+</section>
+
+
+{{# ================= CERTIFICAZIONI — light ================= #}}
+<section class="bg-neutral-50 pb-16 lg:pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10">
+            <div>
+                {{ partial:components/eyebrow label="CERTIFICAZIONI" variant="light" }}
+                <h2 class="font-sans font-bold text-h2 text-neutral-800 leading-[1.05] max-w-md">
+                    QUALITÀ CERTIFICATA
+                </h2>
+            </div>
+            <a href="#" class="inline-flex items-center gap-2 font-mono text-label uppercase text-primary-700 hover:text-primary-600 transition-colors">
+                TUTTE LE CERTIFICAZIONI
+                <svg viewBox="0 0 16 16" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-neutral-100 border border-neutral-100">
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/certifications/Logo certificazione ICIM.png" alt="Certificazione ICIM" class="max-h-24 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/certifications/Logo azienda certificata ISO 9001.png" alt="Azienda certificata ISO 9001" class="max-h-24 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+            <a href="#" class="aspect-3/2 flex items-center justify-center bg-neutral-50 p-8 group">
+                <img src="/images/certifications/Logo Certificazione IQNet 9001 2015.png" alt="Certificazione IQNet 9001 2015" class="max-h-24 w-auto object-contain grayscale opacity-70 transition duration-300 group-hover:grayscale-0 group-hover:opacity-100">
+            </a>
+        </div>
+
+        <p class="mt-6 font-mono text-mono uppercase text-neutral-400">
+            / LABORATORIO CERTIFICATO ED APPROVATO DAI PIÙ GRANDI CLIENTI
+        </p>
+    </div>
+</section>
+
+
+{{# ================= CTA FINALE — dark ================= #}}
+<section class="bg-neutral-800 text-neutral-50">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28 text-center">
+        {{ partial:components/eyebrow label="CONTATTO" variant="dark" }}
+        <h2 class="font-sans font-bold text-display text-neutral-50 leading-[0.95] mb-6">
+            RACCONTACI<br>IL TUO PROGETTO.
+        </h2>
+        <p class="text-body text-neutral-300 max-w-xl mx-auto mb-10">
+            Dalla richiesta più semplice al progetto più complesso: raccontaci le tue necessità e ti forniremo un'analisi tecnica e una proposta di fattibilità.
+        </p>
+        <div class="flex justify-center">
+            {{ partial:components/btn-primary label="CONTATTACI" href="#" }}
+        </div>
+    </div>
+</section>

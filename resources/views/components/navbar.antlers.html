@@ -1,0 +1,85 @@
+{{# Navbar — accetta {{ variant }}: 'dark' o 'light'. Default: 'dark'. #}}
+{{# Accetta {{ active }}: slug della voce nav attiva ('home', 'chi-siamo', 'servizi', 'iot', 'clienti'). #}}
+
+{{ if variant == 'light' }}
+    {{ nav_glass = 'nav-glass-light' }}
+    {{ nav_text = 'text-neutral-700' }}
+    {{ nav_hover = 'hover:text-primary-700' }}
+    {{ logo_variant = 'light' }}
+{{ else }}
+    {{ nav_glass = 'nav-glass-dark' }}
+    {{ nav_text = 'text-neutral-50' }}
+    {{ nav_hover = 'hover:text-primary-400' }}
+    {{ logo_variant = 'dark' }}
+{{ /if }}
+
+<header
+    x-data="{ scrolled: window.scrollY > 8 }"
+    x-init="scrolled = window.scrollY > 8"
+    @scroll.window="scrolled = window.scrollY > 8"
+    :class="scrolled ? '{{ nav_glass }}' : 'bg-transparent'"
+    class="sticky top-0 z-50 transition-colors duration-300">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+        <div class="flex h-20 items-center justify-between gap-8">
+            {{ partial:components/logo :variant="logo_variant" }}
+
+            <nav class="hidden lg:flex items-center gap-10 font-sans text-[15px] font-normal">
+                {{ active ?= '' }}
+                <a href="/" class="relative {{ active == 'home' ? 'text-primary-500' : nav_text }} {{ nav_hover }} transition-colors {{ if active == 'home' }}after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-0.5 after:bg-primary-500{{ /if }}">HOME</a>
+                <a href="#" class="relative {{ active == 'chi-siamo' ? 'text-primary-500' : nav_text }} {{ nav_hover }} transition-colors {{ if active == 'chi-siamo' }}after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-0.5 after:bg-primary-500{{ /if }}">CHI SIAMO</a>
+
+                {{# SERVIZI con dropdown #}}
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <a href="#" class="relative inline-flex items-center gap-1.5 {{ active == 'servizi' ? 'text-primary-500' : nav_text }} {{ nav_hover }} transition-colors {{ if active == 'servizi' }}after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-0.5 after:bg-primary-500{{ /if }}">
+                        SERVIZI
+                        <svg viewBox="0 0 12 12" class="h-2.5 w-2.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4.5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+
+                    <div x-show="open" x-cloak x-transition.opacity.duration.150ms class="absolute left-0 top-full z-50 w-80 pt-4">
+                        <div class="bg-neutral-50 rounded-xl shadow-xl border border-neutral-100 p-2">
+                            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-neutral-100/40 transition-colors">
+                                <div class="font-sans font-semibold text-neutral-800">Cablaggi elettrici</div>
+                                <div class="font-sans text-small text-neutral-500 mt-1">Produzione di cavi e cablaggi per dispositivi elettromeccanici.</div>
+                            </a>
+                            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-neutral-100/40 transition-colors">
+                                <div class="font-sans font-semibold text-neutral-800">Assemblaggi elettromeccanici</div>
+                                <div class="font-sans text-small text-neutral-500 mt-1">Assemblaggio meccanico ed elettromeccanico con piena tracciabilità.</div>
+                            </a>
+                            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-neutral-100/40 transition-colors">
+                                <div class="font-sans font-semibold text-neutral-800">Progettazione e costruzione schede</div>
+                                <div class="font-sans text-small text-neutral-500 mt-1">Schede elettroniche custom, dal prototipo alla piccola serie.</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {{# IOT con dropdown #}}
+                <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                    <a href="#" class="relative inline-flex items-center gap-1.5 {{ active == 'iot' ? 'text-primary-500' : nav_text }} {{ nav_hover }} transition-colors {{ if active == 'iot' }}after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-0.5 after:bg-primary-500{{ /if }}">
+                        IOT
+                        <svg viewBox="0 0 12 12" class="h-2.5 w-2.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4.5l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+
+                    <div x-show="open" x-cloak x-transition.opacity.duration.150ms class="absolute left-0 top-full z-50 w-80 pt-4">
+                        <div class="bg-neutral-50 rounded-xl shadow-xl border border-neutral-100 p-2">
+                            <a href="/iot/sparapolpette" class="block px-4 py-3 rounded-lg hover:bg-neutral-100/40 transition-colors">
+                                <div class="font-sans font-semibold text-neutral-800">Sparapolpette</div>
+                                <div class="font-sans text-small text-neutral-500 mt-1">Dispositivo IoT proprietario.</div>
+                            </a>
+                            <a href="#" class="block px-4 py-3 rounded-lg hover:bg-neutral-100/40 transition-colors">
+                                <div class="font-sans font-semibold text-neutral-800">TPSR Project</div>
+                                <div class="font-sans text-small text-neutral-500 mt-1">Progetto IoT custom.</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="relative {{ active == 'clienti' ? 'text-primary-500' : nav_text }} {{ nav_hover }} transition-colors {{ if active == 'clienti' }}after:absolute after:left-0 after:right-0 after:-bottom-1.5 after:h-0.5 after:bg-primary-500{{ /if }}">CLIENTI</a>
+            </nav>
+
+            <a href="#" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-neutral-50 px-5 py-3 text-[13px] font-medium font-mono uppercase tracking-widest transition-colors">
+                CONTATTACI
+                <svg viewBox="0 0 16 16" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+            </a>
+        </div>
+    </div>
+</header>

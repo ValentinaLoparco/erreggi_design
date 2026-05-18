@@ -1,0 +1,58 @@
+{{# Footer — dark, sempre uguale. #}}
+
+<footer class="bg-neutral-800 text-neutral-300">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+            <div class="md:col-span-4 flex flex-col gap-6">
+                {{ partial:components/logo variant="dark" }}
+                <p class="text-body text-neutral-300 max-w-xs">
+                    Realizziamo cablaggi standard e speciali. Supportiamo il cliente dalla progettazione al prodotto finito.
+                </p>
+            </div>
+
+            <div class="md:col-span-2">
+                <p class="font-mono text-label uppercase mb-4"><span class="text-primary-400">/</span> <span class="text-neutral-300">NAVIGA</span></p>
+                <ul class="space-y-3 text-body text-neutral-50">
+                    <li><a href="/" class="hover:text-primary-400 transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Chi siamo</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Servizi</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">IoT</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Clienti</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-3">
+                <p class="font-mono text-label uppercase mb-4"><span class="text-primary-400">/</span> <span class="text-neutral-300">INFO</span></p>
+                <ul class="space-y-3 text-body text-neutral-50">
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Contatti</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Certificazioni</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Termini e Condizioni</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-primary-400 transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-3">
+                <p class="font-mono text-label uppercase mb-4"><span class="text-primary-400">/</span> <span class="text-neutral-300">CONTATTI</span></p>
+                <address class="not-italic space-y-3 text-body text-neutral-50">
+                    <p>Via Caluso 33c, Mazzè (TO)<br>10035 Italia</p>
+                    <p>P. IVA: 05121410012</p>
+                    <p><a href="tel:+390119835578" class="hover:text-primary-400 transition-colors">+39 011 9835578</a></p>
+                    <p><a href="mailto:info@erregielettronica.it" class="hover:text-primary-400 transition-colors">info@erregielettronica.it</a></p>
+                </address>
+            </div>
+        </div>
+
+        <div class="mt-14 pt-8 border-t border-neutral-700 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="font-mono text-small text-neutral-400">© {{ now format="Y" }} ERREGI Elettronica Srl</p>
+            <div class="flex items-center gap-3">
+                <a href="#" aria-label="LinkedIn" class="text-neutral-400 hover:text-primary-400 transition-colors p-2 border border-neutral-700">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+                </a>
+                <a href="#" aria-label="YouTube" class="text-neutral-400 hover:text-primary-400 transition-colors p-2 border border-neutral-700">
+                    <svg viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.76C18.25 5 12 5 12 5s-6.25 0-7.82.43A2.5 2.5 0 0 0 2.42 7.19 26.07 26.07 0 0 0 2 12a26.07 26.07 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.76C5.75 19 12 19 12 19s6.25 0 7.82-.43a2.5 2.5 0 0 0 1.76-1.76A26.07 26.07 0 0 0 22 12a26.07 26.07 0 0 0-.42-4.81zM10 15V9l5.2 3z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

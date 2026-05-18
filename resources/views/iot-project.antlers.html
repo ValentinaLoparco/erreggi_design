@@ -1,0 +1,217 @@
+{{#
+    PAGINA PROGETTO IOT — riproduzione screenshot-sparapolpette.png.
+    navbar_variant e nav_active arrivano da routes/web.php (route data).
+    Autoplay del primo slider via setInterval in Alpine.
+#}}
+
+<section class="bg-neutral-50">
+    {{# Breadcrumb — pt compensa il -mt-20 del <main> nel layout #}}
+    <div class="mx-auto max-w-7xl px-6 lg:px-10 pt-24 lg:pt-28">
+        <nav class="font-mono text-small text-neutral-400" aria-label="Breadcrumb">
+            <span>/ </span>
+            <a href="/" class="hover:text-primary-700 transition-colors">HOME</a>
+            <span> / </span>
+            <a href="#" class="hover:text-primary-700 transition-colors">IOT</a>
+            <span> / </span>
+            <span class="text-neutral-700">LO SPARAPOLPETTE</span>
+        </nav>
+    </div>
+
+    {{# Header pagina — eyebrow + heading display + body, centrato #}}
+    <div class="mx-auto max-w-3xl px-6 lg:px-10 pt-12 pb-12 lg:pt-20 lg:pb-16 text-center">
+        {{ partial:components/eyebrow label="PROGETTO IOT" variant="light" }}
+        <h1 class="font-sans font-bold text-display text-neutral-800 leading-[0.95] mb-8">
+            LO SPARAPOLPETTE
+        </h1>
+        <p class="text-body text-neutral-600 leading-relaxed">
+            Lo "Sparapolpette" nasce come macchina legata alla campagna di vaccinazione su vasti terreni contro la malattia endemica. Questa macchina può essere utilizzata per spargere equamente su terreni estesi qualsiasi sostanza.
+        </p>
+    </div>
+</section>
+
+{{# Hero slider — 3 immagini per volta (laterali tagliate simmetricamente ai bordi viewport), autoplay. #}}
+<section
+    class="bg-neutral-800 py-16 overflow-hidden"
+    x-data="{
+        active: 0,
+        slides: [
+            '/images/sparapolpette/Immagine%206bc20d.avif',
+            '/images/sparapolpette/Immagine%206bc20d.avif',
+            '/images/sparapolpette/Immagine%206bc20d.avif'
+        ],
+        prev() { this.active = (this.active - 1 + this.slides.length) % this.slides.length },
+        next() { this.active = (this.active + 1) % this.slides.length },
+        init() {
+            setInterval(() => { this.next() }, 4500)
+        }
+    }"
+>
+    {{# Mobile: solo main image #}}
+    <div class="md:hidden mx-auto max-w-7xl px-6">
+        <div class="aspect-video overflow-hidden bg-neutral-700 relative">
+            <template x-for="(src, i) in slides" :key="i">
+                <img :src="src" alt="" x-show="active === i" x-transition.opacity.duration.700ms class="absolute inset-0 h-full w-full object-cover">
+            </template>
+        </div>
+    </div>
+
+    {{#
+        Desktop: main centrato in viewport (60vw), prev/next ancorati con calc()
+        ai due lati del main. La section ha overflow-hidden, quindi le laterali
+        appaiono tagliate simmetricamente al bordo destro e sinistro dello schermo.
+    #}}
+    <div class="hidden md:block relative h-[33.75vw]">
+        {{# Main — centrato orizzontalmente #}}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[60vw] aspect-video overflow-hidden bg-neutral-700">
+            <template x-for="(src, i) in slides" :key="i">
+                <img :src="src" alt="" x-show="active === i" x-transition.opacity.duration.700ms class="absolute inset-0 h-full w-full object-cover">
+            </template>
+        </div>
+
+        {{# Prev — bordo destro a 1rem dal bordo sinistro del main #}}
+        <button
+            type="button"
+            @click="prev()"
+            aria-label="Slide precedente"
+            class="absolute top-0 right-[calc(50%+30vw+1rem)] w-[60vw] aspect-video overflow-hidden bg-neutral-900 opacity-50 hover:opacity-75 transition-opacity cursor-pointer"
+        >
+            <template x-for="(src, i) in slides" :key="i">
+                <img :src="src" alt="" x-show="(active - 1 + slides.length) % slides.length === i" class="absolute inset-0 h-full w-full object-cover">
+            </template>
+        </button>
+
+        {{# Next — bordo sinistro a 1rem dal bordo destro del main #}}
+        <button
+            type="button"
+            @click="next()"
+            aria-label="Slide successiva"
+            class="absolute top-0 left-[calc(50%+30vw+1rem)] w-[60vw] aspect-video overflow-hidden bg-neutral-900 opacity-50 hover:opacity-75 transition-opacity cursor-pointer"
+        >
+            <template x-for="(src, i) in slides" :key="i">
+                <img :src="src" alt="" x-show="(active + 1) % slides.length === i" class="absolute inset-0 h-full w-full object-cover">
+            </template>
+        </button>
+    </div>
+
+    {{# Dot indicator #}}
+    <div class="mt-8 flex items-center justify-center gap-3">
+        <template x-for="(src, i) in slides" :key="i">
+            <button
+                type="button"
+                @click="active = i"
+                :aria-label="`Vai a slide ${i + 1}`"
+                :class="active === i ? 'bg-primary-500 w-6' : 'bg-neutral-500 w-2 hover:bg-neutral-400'"
+                class="h-2 transition-all"
+            ></button>
+        </template>
+    </div>
+</section>
+
+
+{{# ================= BENEFICI — light ================= #}}
+<section class="bg-neutral-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+        {{# Riga 1: eyebrow + titolo (sx) + paragrafo (dx) #}}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
+            <div>
+                {{ partial:components/eyebrow label="BENEFICI" variant="light" }}
+                <h2 class="font-sans font-bold text-display text-neutral-800 leading-[0.95]">
+                    PROGETTATO<br>PER FARE LA<br>DIFFERENZA
+                </h2>
+            </div>
+            <p class="text-body text-neutral-500 max-w-md lg:self-end">
+                Lo Sparapolpette è il risultato di un percorso di ricerca dedicato alla prevenzione delle malattie endemiche su grandi superfici: una macchina autonoma, configurabile e semplice da usare anche senza competenze specifiche.
+            </p>
+        </div>
+
+        {{# Riga 2: 4 benefici affiancati #}}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">01</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Versatilità</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Non servono competenze specifiche per usarlo: pensato per essere operativo fin da subito, in qualsiasi contesto.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— plug & play</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">02</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Customizzazione</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    È possibile impostare i parametri richiesti attraverso un software proprietario di ERREGI Elettronica.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— software dedicato</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">03</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Autonomia</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Struttura autonoma del peso di 60Kg che può contenere da 100 a 200 esche, senza necessità di supporti esterni.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— 100–200 esche</span>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-4">
+                <p class="font-mono text-label uppercase text-primary-500 mb-2">04</p>
+                <h3 class="font-sans font-semibold text-h3 text-neutral-800 mb-2">Prevenzione</h3>
+                <p class="text-small text-neutral-500 mb-3">
+                    Costruito specificamente per prevenire le malattie endemiche, distribuendo le sostanze in modo uniforme.
+                </p>
+                <span class="inline-block font-mono text-mono text-primary-700 bg-primary-50 px-2 py-0.5">— anti-endemia</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{{# ================= OBIETTIVI — dark ================= #}}
+<section class="bg-neutral-800 text-neutral-50 py-16 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-10">
+
+        <div class="mb-12">
+            {{ partial:components/eyebrow label="OBIETTIVI" variant="dark" }}
+            <h2 class="font-sans font-bold text-display text-neutral-50 leading-[0.95]">
+                QUAL ERA L'OBIETTIVO
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+
+            <div class="md:pr-8 lg:pr-12">
+                <p class="font-mono text-label uppercase text-primary-400 mb-6">/ 01</p>
+                <h3 class="font-sans font-bold text-h2 text-neutral-50 mb-4 leading-[1.05]">
+                    Portabilità
+                </h3>
+                <p class="text-body text-neutral-300">
+                    Una struttura compatta e indipendente, pensata per essere movimentata e posizionata con facilità anche su terreni estesi e difficili da raggiungere.
+                </p>
+            </div>
+
+            <div class="md:px-8 lg:px-12 md:border-l md:border-neutral-700">
+                <p class="font-mono text-label uppercase text-primary-400 mb-6">/ 02</p>
+                <h3 class="font-sans font-bold text-h2 text-neutral-50 mb-4 leading-[1.05]">
+                    Velocità
+                </h3>
+                <p class="text-body text-neutral-300">
+                    Distribuzione rapida delle sostanze su vasti terreni, riducendo i tempi di intervento e ottimizzando le campagne di prevenzione e trattamento.
+                </p>
+            </div>
+
+            <div class="md:pl-8 lg:pl-12 md:border-l md:border-neutral-700">
+                <p class="font-mono text-label uppercase text-primary-400 mb-6">/ 03</p>
+                <h3 class="font-sans font-bold text-h2 text-neutral-50 mb-4 leading-[1.05]">
+                    Efficienza
+                </h3>
+                <p class="text-body text-neutral-300">
+                    Spargimento equamente calibrato grazie al software proprietario: ogni esca arriva dove serve, senza sprechi e con massima copertura.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
