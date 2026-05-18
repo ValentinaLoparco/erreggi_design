@@ -1,0 +1,8 @@
+vendor
+node_modules
+resources
+config
+routes
+app
+bootstrap
+database
